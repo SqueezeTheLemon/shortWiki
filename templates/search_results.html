@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색 결과</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🔍 검색 결과</h1>
+
+    <p>"{{ query }}"에 대한 검색 결과:</p>
+
+    <div id="result">
+        {% if results %}
+            <ul class="result-list">
+                {% for item in results %}
+                    <li>
+                        <p><strong>{{ item.title }}</strong> → {{ item.short }}</p>
+                        <p class="views">👀 조회수: {{ item.views if 'views' in item else 0 }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-result">❌ 검색 결과가 없습니다.</p>
+        {% endif %}
+    </div>
+
+    <a href="/shortwiki">
+        <button class="full-width-btn">🏠 홈으로 돌아가기</button>
+    </a>
+</body>
+</html>

@@ -8,28 +8,38 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="{{ url_for('static', filename='main.js') }}" defer></script> <!-- 🔥 분리된 JS 파일 추가 -->
+    <script>
+        window.onload = function() {
+            // Flash 메시지가 있으면 alert로 표시
+            const flashMessage = "{{ get_flashed_messages() | join(' ') }}";
+            if (flashMessage) {
+                alert(flashMessage);
+            }
+        };
+    </script>
+
 </head>
 <body >
     <h1>📖 웹소설 & 웹툰 줄임말 사전</h1>
 
     <!-- 🔍 검색 기능 -->
-    <form method="POST">
-        <input type="text" name="search" placeholder="작품명 또는 줄임말 검색">
+
+    <form action = "/shortwiki/search" method="POST"> <!-- post 방식으로, 서버에 데이터를 전송한다.  -->
+        <!-- 사용자가 검색어를 입력하는 텍스트 필드. "searh"라는 이름으로 서버에 데이터가 전달된다.  -->
+        <input type="text" name="search" placeholder="작품명 또는 줄임말 검색"> 
+        
+        <select name="search_type">  <!-- 🔥 검색 유형 선택 -->
+            <option value="title">작품명</option>
+            <option value="short">줄임말</option>
+        </select>
+
         <button type="submit">검색</button>
     </form>
-
-    <div id="result">
-        {% if results %}
-            {% for item in results %}
-                <p>{{ item.title }} → {{ item.short }}</p>
-            {% endfor %}
-        {% endif %}
-    </div>
-
     <hr>
 
     <!-- ✏️ 줄임말 추가 기능 -->
-    <h2>✏️ 줄임말 추가하기</h2>
+    <h2>✏️ 줄임말 추가하기</h2> 
+    <!-- flask 서버의  "/shortwiki/add" 라우트로 데이터를 보낸다. -->
     <form action="/shortwiki/add" method="POST">
         <input type="text" name="newTitle" placeholder="작품명" required>
         <input type="text" name="newShort" placeholder="줄임말" required>
@@ -43,7 +53,10 @@
     <hr>
 
     <!-- 🔥 인기 줄임말 -->
-    <button id="showPopularBtn">🔥 인기 줄임말 보기</button>
-    <div id="popular"></div>
+    <a href="/shortwiki/popular">
+        <button id="showPopularBtn">🔥 인기 줄임말 보기</button>
+        <div id="popular"></div>
+    </a>
+    
 </body>
 </html>

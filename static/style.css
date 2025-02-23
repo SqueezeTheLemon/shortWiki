@@ -1,15 +1,168 @@
+/* ✨ 기본 스타일 */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #E5D0F2;
     text-align: center;
-    margin: 50px;
+    margin: 0;
+    padding: 20px; /* 🔥 여백 추가 */
 }
 
-input, button, select {
-    margin: 5px;
-    padding: 10px;
-    font-size: 16px;
+/* 📖 헤더 스타일 */
+h1 {
+    font-size: 36px; /* 🔥 글자 크기 증가 */
+    color: #5A56BF;
+    margin-top: 30px;
+    font-weight: bold;
 }
 
-#result, #popular {
+/* 🔍 검색 & 추가 폼 스타일 */
+form {
+    background: white;
+    padding: 25px; /* 🔥 폼 크기 증가 */
+    margin: 20px auto;
+    max-width: 500px; /* 🔥 폼 너비 증가 */
+    border-radius: 12px; /* 둥근 테두리 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 입력 필드 스타일 */
+input, select, button {
+    width: 95%; /* 🔥 입력창 너비 증가 */
+    padding: 15px; /* 🔥 크기 증가 */
+    margin: 10px 0;
+    border: 2px solid #CEB3F2; /* 테두리 강조 */
+    border-radius: 8px;
+    font-size: 18px; /* 🔥 글자 크기 증가 */
+}
+
+/* 버튼 스타일 */
+button {
+    background-color: #6D8EF2;
+    color: white;
+    font-size: 20px; /* 🔥 버튼 글자 크기 증가 */
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    padding: 15px; /* 🔥 버튼 크기 증가 */
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #514EA6;
+}
+
+/* 🔥 인기 줄임말 버튼 */
+#showPopularBtn {
+    background-color: #514EA6;
+    width: 60%;
     margin-top: 20px;
+}
+
+#showPopularBtn:hover {
+    background-color: #5A56BF;
+}
+
+/* 📏 반응형 디자인 (모바일 최적화) */
+@media (max-width: 600px) {
+    form {
+        max-width: 90%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* 🔍 검색 결과 스타일 */
+.result-list {
+    list-style: none;
+    padding: 0;
+}
+
+.result-list li {
+    background: #CEB3F2;
+    padding: 20px; /* 🔥 리스트 크기 증가 */
+    margin: 15px auto;
+    max-width: 500px; /* 🔥 리스트 너비 증가 */
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    font-size: 18px;
+}
+
+.result-list p {
+    margin: 8px 0;
+    color: #514EA6;
+}
+
+/* 조회수 스타일 */
+.views {
+    font-size: 16px;
+    color: #514EA6;
+}
+
+/* 검색 결과 없음 */
+.no-result {
+    font-size: 22px;
+    color: #5A56BF;
+    font-weight: bold;
+}
+
+/* 🔥 인기 줄임말 스타일 */
+.popular-list {
+    list-style: none;
+    padding: 0;
+}
+
+.popular-list li {
+    background: #CEB3F2;
+    padding: 20px; /* 🔥 크기 증가 */
+    margin: 15px auto;
+    max-width: 500px; /* 🔥 너비 증가 */
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    font-size: 18px;
+}
+
+.popular-list p {
+    margin: 8px 0;
+    color: #514EA6;
+}
+
+/* 조회수 */
+.views {
+    font-size: 16px;
+    color: #5A56BF;
+}
+
+/* ❌ 데이터 없을 때 메시지 */
+.no-result {
+    font-size: 22px;
+    color: #5A56BF;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 🏠 홈으로 돌아가기 버튼을 리스트와 같은 너비로 설정 */
+.full-width-btn {
+    display: block;
+    width: 100%;
+    max-width: 500px; /* 🔥 버튼 크기 증가 */
+    margin: 15px auto;
+    background-color: #5A56BF;
+    color: white;
+    font-size: 20px; /* 🔥 글자 크기 증가 */
+    font-weight: bold;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.full-width-btn:hover {
+    background-color: #514EA6;
 }

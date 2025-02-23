@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 인기 줄임말</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🔥 인기 줄임말</h1>
+
+    <div id="popular">
+        {% if popular_terms %}
+            <ul class="popular-list">
+                {% for item in popular_terms %}
+                    <li>
+                        <p><strong>{{ item.title }}</strong> → {{ item.short }}</p>
+                        <p class="views">👀 조회수: {{ item.views }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-result">❌ 인기 줄임말이 없습니다.</p>
+        {% endif %}
+    </div>
+
+    <a href="/shortwiki">
+        <button class="full-width-btn">🏠 홈으로 돌아가기</button>
+    </a>
+</body>
+</html>
