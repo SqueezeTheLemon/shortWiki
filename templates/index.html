@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹소설 & 웹툰 줄임말 사전</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script> <!-- 🔥 분리된 JS 파일 추가 -->
+</head>
+<body >
+    <h1>📖 웹소설 & 웹툰 줄임말 사전</h1>
+
+    <!-- 🔍 검색 기능 -->
+    <form method="POST">
+        <input type="text" name="search" placeholder="작품명 또는 줄임말 검색">
+        <button type="submit">검색</button>
+    </form>
+
+    <div id="result">
+        {% if results %}
+            {% for item in results %}
+                <p>{{ item.title }} → {{ item.short }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <hr>
+
+    <!-- ✏️ 줄임말 추가 기능 -->
+    <h2>✏️ 줄임말 추가하기</h2>
+    <form action="/shortwiki/add" method="POST">
+        <input type="text" name="newTitle" placeholder="작품명" required>
+        <input type="text" name="newShort" placeholder="줄임말" required>
+        <select name="newCategory">
+            <option value="웹소설">웹소설</option>
+            <option value="웹툰">웹툰</option>
+        </select>
+        <button type="submit">추가하기</button>
+    </form>
+
+    <hr>
+
+    <!-- 🔥 인기 줄임말 -->
+    <button id="showPopularBtn">🔥 인기 줄임말 보기</button>
+    <div id="popular"></div>
+</body>
+</html>
